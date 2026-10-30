@@ -2,6 +2,9 @@
 
 Kit base para la competencia de videojuegos. Requiere un JDK 11 o superior.
 
+El kit resuelve solo lo que no es materia del curso: la ventana, el bucle de juego, el teclado, el mouse, el reloj y el dibujo de texto.
+**Todo lo demás lo programan ustedes:** entidades, mundo, colisiones, física, reglas, pantallas y las tres estructuras de datos.
+
 ## Compilar y ejecutar
 
 | Sistema | Compilar | Ejecutar la demo | Ejecutar otra clase |
@@ -14,22 +17,19 @@ Si ven caracteres raros en pantalla o en la consola, es la codificación.
 
 ## Primeros 10 minutos
 
-1. Compilen y ejecuten la demo: `demo.Main`. Click crea pelotas, 1 a 5 cambia el material, R limpia.
-2. Ejecuten `verificador.PruebaMisEstructuras`. Debe imprimir OK para Lista, Pila y Cola.
-3. Lean `demo/EscenaDemo.java`: es el ejemplo mínimo de una escena con mundo, entidades y HUD.
+1. Compilen y ejecuten la demo: `demo.Main`. Flechas mueven el cuadrado, click cambia el color, ENTER cambia de escena.
+2. Lean `demo/EscenaDemo.java` y `demo/EscenaDemoDos.java`: muestran cómo se usan escenas, teclado, mouse, reloj y texto.
+3. Ejecuten `verificador.PruebaMisEstructuras`. Todavía no verifica nada: la completa el equipo de Estructuras con sus clases.
 
 ## Paquetes
 
 | Paquete | Contenido | ¿Se modifica? |
 | --- | --- | --- |
-| `motor` | Ventana, bucle de juego, entrada, escenas, mundo, temporizador | No |
-| `contratos` | Interfaces `Actualizable`, `Dibujable`, `Colisionable`, `Estadisticas` | No |
-| `estructuras` | Interfaces `Lista<T>`, `Pila<T>`, `Cola<T>` y la clase base `ListaBase<T>` | Aquí van sus TADs |
-| `entidades` | Clase abstracta `Entidad` | No (se hereda) |
-| `fisica` | `Cuerpo`, `Material`, `Fisica` | No (se hereda) |
-| `provisorio` | Estructuras temporales para arrancar sin esperar a las propias | No se pueden usar en la entrega |
-| `ui` | `Texto` y `HudBasico` de ejemplo | Se puede extender o reemplazar |
-| `verificador` | Pruebas automáticas de sus TADs | No |
-| `demo` | Ejemplo de uso del kit | Referencia |
+| `motor` | Ventana, bucle de juego, escenas, entrada y temporizador | No |
+| `contratos` | Interfaces `Actualizable` y `Dibujable` | No |
+| `estructuras` | Interfaces `Lista<T>`, `Pila<T>` y `Cola<T>` | Las interfaces no. Aquí van sus implementaciones |
+| `ui` | `Texto`: dibuja texto alineado | Se puede extender con clases propias |
+| `verificador` | Pruebas automáticas de sus estructuras | Solo `PruebaMisEstructuras` |
+| `demo` | Ejemplo del motor, sin lógica de juego | Referencia |
 
-Sus clases van en paquetes propios, por ejemplo `juego`, `ui` (nuevas clases) o el nombre del juego.
+Sus clases van en paquetes propios dentro de `src`, por ejemplo `juego.entidades`, `juego.reglas` y `juego.pantallas`.

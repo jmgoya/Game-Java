@@ -79,12 +79,12 @@ public final class VerificadorEstructuras {
 
         protegido("búsqueda", () -> {
             comprobar("indiceDe(20) debe ser 1", lista.indiceDe(20) == 1);
+            comprobar("indiceDe(10) debe ser 0", lista.indiceDe(10) == 0);
+            comprobar("indiceDe(30) debe ser 2", lista.indiceDe(30) == 2);
             comprobar("indiceDe de un valor ausente debe ser -1", lista.indiceDe(77) == -1);
-            comprobar("contiene(30) debe ser true", lista.contiene(30));
-            comprobar("contiene(77) debe ser false", !lista.contiene(77));
-            comprobar("quitar(20) debe devolver true", lista.quitar(20));
-            comprobar("tras quitar(20): " + contenido(lista), contenido(lista).equals("10,30"));
-            comprobar("quitar de un valor ausente debe devolver false", !lista.quitar(77));
+            lista.eliminar(1);
+            comprobar("tras eliminar el 20: " + contenido(lista), contenido(lista).equals("10,30"));
+            comprobar("indiceDe(20) tras eliminarlo debe ser -1", lista.indiceDe(20) == -1);
         });
 
         protegido("índices inválidos", () -> {
@@ -121,21 +121,6 @@ public final class VerificadorEstructuras {
                 suma += lista.obtener(i);
             }
             comprobar("2000 elementos: la suma debe ser 1999000", suma == 1999000L);
-            lista.vaciar();
-        });
-
-        protegido("recorrido con for-each", () -> {
-            for (int i = 1; i <= 5; i++) {
-                lista.agregar(i);
-            }
-            StringBuilder visto = new StringBuilder();
-            for (Integer x : lista) {
-                if (visto.length() > 0) {
-                    visto.append(',');
-                }
-                visto.append(x);
-            }
-            comprobar("for-each debe recorrer 1,2,3,4,5 (recorrió " + visto + ")", visto.toString().equals("1,2,3,4,5"));
             lista.vaciar();
         });
 

@@ -1,6 +1,6 @@
 package estructuras;
 
-public interface Lista<T> extends Iterable<T> {
+public interface Lista<T> {
 
     // Altas
     void agregar(T elemento);
@@ -12,16 +12,12 @@ public interface Lista<T> extends Iterable<T> {
 
     int indiceDe(T elemento);
 
-    boolean contiene(T elemento);
-
     int tamanio();
 
     boolean estaVacia();
 
     // Bajas
     T eliminar(int indice);
-
-    boolean quitar(T elemento);
 
     void vaciar();
 }
